@@ -1,0 +1,1302 @@
+local rnm = {
+"Flawless Puncture Of Tigers (完美穿刺老虎)",
+"As Survival (作为生存)",
+"Tanglepiercer (纏結穿刺者)",
+"Retaliate (報復)"
+}
+
+
+--code that makes it work below dont mind much of it lmao
+local lp =game.Players.LocalPlayer local char =lp.Character
+local hrp =char.HumanoidRootPart local bp =lp.Backpack
+local moveset =game:GetService("Players").LocalPlayer.PlayerGui.Main.Moveset
+local gay = moveset:GetChildren() for i, thing in ipairs(gay) do
+if thing:IsA('Frame') then for i = 1,#rnm do if tonumber(thing.Key.Text) == i 
+then thing.ItemName.Text = rnm[i] end end end end
+
+--[[
+    ManjiKickHit = "rbxassetid://82105933707384",
+DivergentFist3 = "rbxassetid://113945685481618",
+DivergentFist2 = "rbxassetid://79702200722520",
+DivergentFist1 = "rbxassetid://14771588355",
+CursedStrikeHit = "rbxassetid://16872047350",
+CrushingBlow = "rbxassetid://15432272268",
+RushHit = "rbxassetid://16827230331",
+Ultimate = "rbxassetid://16663212523",
+Cleave = "rbxassetid://16638412783",
+CursedStrike = "rbxassetid://15434683426",
+Melee4 = "rbxassetid://17177309004",
+Melee3 = "rbxassetid://17177307018",
+Melee2 = "rbxassetid://17177305963",
+Melee1 = "rbxassetid://17177304783",
+Rush = "rbxassetid://15984964491",
+FlameArrow = "rbxassetid://15934318270",
+DomainWarn = "rbxassetid://15488163846",
+MalevolentShrine = "rbxassetid://15489784732",
+ManjiKick = "rbxassetid://14841505475",
+Dismantle = "rbxassetid://18867830088",
+SlaughterDemon = "rbxassetid://16735568688",
+Melee4 = "rbxassetid://14748922700",
+Melee4 = "rbxassetid://14748922700",
+Chase = "rbxassetid://15112244663",
+Chase = "rbxassetid://15112244663",
+Down = "rbxassetid://15142443111",
+Down = "rbxassetid://15142443111",
+Up = "rbxassetid://15142441185",
+Up = "rbxassetid://15142441185",
+Melee3 = "rbxassetid://14748873813",
+Melee3 = "rbxassetid://14748873813",
+Melee2 = "rbxassetid://14748873193",
+Melee2 = "rbxassetid://14748873193",
+Melee1 = "rbxassetid://14748872179",
+Melee1 = "rbxassetid://14748872179",
+]]
+
+for i = 1,5 do 
+pcall(function() getgenv().WallCombo:Disconnect() end)
+pcall(function() getgenv().Blocking:Disconnect() end)
+pcall(function() getgenv().Idle:Disconnect() end)
+pcall(function() getgenv().Walk:Disconnect() end)
+pcall(function() getgenv().Ultimate:Disconnect() end)
+pcall(function() getgenv().Move1:Disconnect() end)
+pcall(function() getgenv().Move1B:Disconnect() end)
+pcall(function() getgenv().Move2:Disconnect() end)
+pcall(function() getgenv().Move2B:Disconnect() end)
+pcall(function() getgenv().Move3:Disconnect() end)
+pcall(function() getgenv().Move3B:Disconnect() end)
+pcall(function() getgenv().Move3BB:Disconnect() end)
+pcall(function() getgenv().Move4:Disconnect() end)
+pcall(function() getgenv().Move4B:Disconnect() end)
+pcall(function() getgenv().Move5:Disconnect() end)
+pcall(function() getgenv().Move5B:Disconnect() end)
+pcall(function() getgenv().Move6:Disconnect() end)
+pcall(function() getgenv().Move6B:Disconnect() end)
+pcall(function() getgenv().Move7:Disconnect() end)
+pcall(function() getgenv().Move7B:Disconnect() end)
+
+
+pcall(function() getgenv().M1:Disconnect() end)
+pcall(function() getgenv().M2:Disconnect() end)
+pcall(function() getgenv().M3:Disconnect() end)
+pcall(function() getgenv().M4:Disconnect() end)
+
+
+pcall(function() getgenv().UltMove1:Disconnect() end)
+pcall(function() getgenv().UltMove2:Disconnect() end)
+pcall(function() getgenv().UltMove2B:Disconnect() end)
+pcall(function() getgenv().UltMove3:Disconnect() end)
+pcall(function() getgenv().UltMove4:Disconnect() end)
+end
+task.wait(.4)
+pcall(function() for i = 1,15 do 
+    game.ReplicatedStorage.OkarunAssets:Destroy() end end)
+local v = game:GetObjects("rbxassetid://72249011932785")[1]
+v.Parent = game.ReplicatedStorage
+v.Name = 'OkarunAssets'
+function BurstVFX(cframe)
+spawn(function()
+local d = v.BurstEffect:Clone()
+d.Parent = workspace
+d:PivotTo(cframe)
+local effect1 = d.Effect1
+local effect2 = d.Effect2
+
+local cframeRandom1 = math.random(-5,5)
+local cframeRandom2 = math.random(-5,5)
+local cframeRandom3 = math.random(-5,5)
+local cframeRandom4 = math.random(-5,5)
+local cframeRandom5 = math.random(-5,5)
+local cframeRandom6 = math.random(-5,5)
+
+local sizeRandom1 = math.random(3,8)/2
+local sizeRandom2 = math.random(3,8)/2
+
+for i = 1, 10 do
+effect1.CFrame = effect1.CFrame * CFrame.Angles(cframeRandom1,cframeRandom2,cframeRandom3)
+effect2.CFrame = effect1.CFrame * CFrame.Angles(cframeRandom4,cframeRandom5,cframeRandom6)
+effect1.Size = effect1.Size + Vector3.new(sizeRandom1,0,sizeRandom1)
+effect2.Size = effect2.Size + Vector3.new(sizeRandom2,0,sizeRandom2)
+effect1.Transparency = effect1.Transparency + .8/15
+effect2.Transparency = effect2.Transparency + .8/15
+task.wait(.015) end
+
+d:Destroy()
+task.wait(4)
+d:Destroy()
+end)
+end
+function WindVFX(cframe)
+spawn(function()
+local d = v.Wind:Clone()
+d.Parent = workspace
+d:PivotTo(cframe)
+local model = d
+local twirl = model:WaitForChild("Twirl")
+spawn(function()
+for i = 1, 50 do
+twirl.CFrame = twirl.CFrame * CFrame.Angles(0,0,.5)
+twirl.Size = twirl.Size + Vector3.new(1,1,2)
+twirl.Transparency = twirl.Transparency + 1/50
+task.wait(.01) end
+end)
+for i = 1, 4 do
+local effect = model["WindBeamEffect"..i]
+spawn(function()
+for i = 1, 20 do
+effect.Attachment1.Position = Vector3.new(0,0,i/(1+.5))
+effect.Attachment2.Position = Vector3.new(0,0,-i/(1+.5))
+
+effect.Beams.Beam1.CurveSize0 = i
+effect.Beams.Beam1.CurveSize1 = -i
+effect.Beams.Beam2.CurveSize0 = -i
+effect.Beams.Beam2.CurveSize1 = i
+
+effect.Beams.Beam1.Transparency = NumberSequence.new(i/20)
+effect.Beams.Beam2.Transparency = NumberSequence.new(i/20)
+task.wait(.01) end
+end)
+wait(0.1)
+end
+wait(1)
+d:Destroy()
+end)
+end
+function LightHitEffect(cframe)
+spawn(function()
+local d = v.LightHitEffect:Clone()
+d.Parent = workspace
+d:PivotTo(cframe)
+local parent = d
+for i,v in pairs(parent:GetChildren()) do
+if v.Name == "CurveEffect" then
+local Tween = game.TweenService:Create(v, 
+TweenInfo.new(1, Enum.EasingStyle.Back, 
+Enum.EasingDirection.Out, 0, false, 0),
+{
+CFrame = v.CFrame - v.CFrame.upVector * 5,
+}):Play()
+spawn(function()
+for i = 1, 5 do
+v:WaitForChild("Beam").Transparency = NumberSequence.new(i/5)
+task.wait(.01) end
+end)
+elseif v.Name == "SmallEffect" then
+local Tween =  game.TweenService:Create(v,
+TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out, 0, false, 0),
+{
+CFrame = v.CFrame + v.CFrame.rightVector * 10,
+Size = v.Size + Vector3.new(5,.2,.2),
+Transparency = 1
+}):Play()
+elseif v.Name == "BallEffect" then
+local Tween =  game.TweenService:Create(v, 
+TweenInfo.new(1, Enum.EasingStyle.Back,
+Enum.EasingDirection.Out, 0, false, 0),{
+CFrame = v.CFrame + v.CFrame.upVector * 10,
+Size = v.Size + Vector3.new(.5,20,.5),
+Transparency = 1
+}):Play()
+elseif v.Name == "ParticleEffect" then
+spawn(function()
+for i = 1, 5 do
+v.ParticleEmitter.Transparency = NumberSequence.new(i/5)
+task.wait(.01) end
+end)
+end
+end
+wait(1)
+d:Destroy()
+end)
+end
+function HeavyHitVFX(cframe)
+spawn(function()
+local d = v.HeavyHitEffect:Clone()
+d.Parent = workspace
+d:PivotTo(cframe)
+local parent = d
+for i,v in pairs(parent:GetChildren()) do
+if v.Name == "CurveEffect" then
+local Tween = game.TweenService:Create(v, 
+TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out),{
+CFrame = v.CFrame - v.CFrame.upVector * 5}):Play()
+spawn(function()
+for i = 1, 5 do
+v:WaitForChild("Beam").Transparency = NumberSequence.new(i/5)
+wait() end
+end)
+elseif v.Name == "SmallEffect" then
+local Tween = game.TweenService:Create(v, 
+TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out),{
+CFrame = v.CFrame + v.CFrame.rightVector * 10,
+Size = v.Size + Vector3.new(20,0,0),
+Transparency = 1
+}):Play()
+elseif v.Name == "BallEffect" then
+local Tween = game.TweenService:Create(v, 
+TweenInfo.new(1, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+,{
+CFrame = v.CFrame + v.CFrame.upVector * 10,
+Size = v.Size + Vector3.new(.5,20,.5),
+Transparency = 1
+}):Play()
+elseif v.Name == "ParticleEffect" then
+spawn(function()
+for i = 1, 5 do
+v.ParticleEmitter.Transparency = NumberSequence.new(i/5)
+wait() end
+end)
+end
+end
+local effect1 = d.Effect1
+local effect2 = d.Effect2
+
+local cframeRandom1 = math.random(-5,5)
+local cframeRandom2 = math.random(-5,5)
+local cframeRandom3 = math.random(-5,5)
+local cframeRandom4 = math.random(-5,5)
+local cframeRandom5 = math.random(-5,5)
+local cframeRandom6 = math.random(-5,5)
+
+local sizeRandom1 = math.random(3,8)
+local sizeRandom2 = math.random(3,8)
+
+for i = 1, 10 do
+effect1.CFrame = effect1.CFrame * CFrame.Angles(cframeRandom1,cframeRandom2,cframeRandom3)
+effect2.CFrame = effect1.CFrame * CFrame.Angles(cframeRandom4,cframeRandom5,cframeRandom6)
+effect1.Size = effect1.Size + Vector3.new(sizeRandom1,0,sizeRandom1)
+effect2.Size = effect2.Size + Vector3.new(sizeRandom2,0,sizeRandom2)
+effect1.Transparency = effect1.Transparency + .6/10
+effect2.Transparency = effect2.Transparency + .6/10
+wait() end
+wait(1)
+d:Destroy()
+end)
+end
+local db = game:GetService("Debris")
+function del(i,d)
+db:AddItem(i, d)
+end
+function heavysfx(x,y,z)
+if x == nil then x = 0 end if y == nil then y = 0 end if z == nil then z = 0 end
+local v =Instance.new('Part')
+v.Transparency = 1
+v.Parent = workspace
+del(v,3)
+local RunService = game:GetService("RunService")
+local lol = RunService.RenderStepped:Connect(function(step)
+v.CFrame = workspace.CurrentCamera.CFrame*CFrame.new(x,y,z)
+end)
+task.delay(4,function()
+lol:Disconnect()
+end)
+    local s= Instance.new('Sound')
+    s.SoundId = 'rbxassetid://3201554385'
+    s.Parent=v
+    s.Volume = 1 s:Play()
+    s.PlaybackSpeed = .45
+    del(s,4)
+    local lol = Instance.new('DistortionSoundEffect')
+lol.Level = .7
+lol.Parent = s
+local lol = Instance.new('EchoSoundEffect')
+lol.DryLevel = 10
+lol.Feedback=.1
+lol.Priority=111
+lol.WetLevel=10
+lol.Delay = .01
+lol.Enabled = true
+lol.Parent = pp
+end
+        
+function burstsfx(x,y,z)
+if x == nil then x = 0 end if y == nil then y = 0 end if z == nil then z = 0 end
+local v =Instance.new('Part')
+v.Transparency = 1
+v.Parent = workspace
+del(v,1)
+local RunService = game:GetService("RunService")
+local lol = RunService.RenderStepped:Connect(function(step)
+v.CFrame = workspace.CurrentCamera.CFrame*CFrame.new(x,y,z)
+end)
+task.delay(1,function()
+lol:Disconnect()
+end)
+    local s= Instance.new('Sound')
+    s.SoundId = 'rbxassetid://3201554155'
+    s.Parent=v
+    s.Volume = 1 s:Play()
+    del(s,4)
+end
+-- Safe deletion of specific items under ReplicatedStorage.Utils.Itadori
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local utils = ReplicatedStorage:FindFirstChild("Utils")
+if utils then
+    local itadori = utils:FindFirstChild("Itadori")
+    if itadori then
+        local toDelete = { "CrushingBlow", "PerfectHit", "DivergentFist" }
+        for _, name in ipairs(toDelete) do
+            local item = itadori:FindFirstChild(name)
+            if item then
+                item:Destroy()
+            end
+        end
+    end
+end
+local AnimationSpeed = 1 -- Default animation speed
+local ChargeAnimTrack, Combo1Track, MonitorConnection
+
+-- Utility: Adjust speed of all animations
+function AdjustSpeed(speed)
+    AnimationSpeed = speed
+    if ChargeAnimTrack and ChargeAnimTrack.IsPlaying then
+        ChargeAnimTrack:AdjustSpeed(speed)
+    end
+    if Combo1Track and Combo1Track.IsPlaying then
+        Combo1Track:AdjustSpeed(speed)
+    end
+end
+
+-- Utility: Set custom TimePosition (e.g., to sync or resume)
+function SetTimePosition(position)
+    if ChargeAnimTrack then
+        ChargeAnimTrack.TimePosition = position
+    end
+    if Combo1Track then
+        Combo1Track.TimePosition = position
+    end
+end
+
+getgenv().Move1 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://77200218033775" then -- Your original anim
+        if v.TimePosition < 1.5 then
+            -- Play ChargeAnim
+            local ChargeAnim = Instance.new("Animation")
+            ChargeAnim.AnimationId = "rbxassetid://72932825817330"
+            local ChargeAnimTrack = char.Humanoid:LoadAnimation(ChargeAnim)
+            ChargeAnimTrack.Priority = Enum.AnimationPriority.Action4
+            ChargeAnimTrack:Play()
+            ChargeAnimTrack.TimePosition = 2
+            ChargeAnimTrack:AdjustSpeed(0.2)
+
+            -- Monitor pause/resume state of original anim
+            local MonitorConnection
+            MonitorConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                if v.Speed <= 0 then
+                    ChargeAnimTrack:AdjustSpeed(0)
+                else
+                    ChargeAnimTrack:AdjustSpeed(AnimationSpeed)
+                end
+            end)
+
+            -- Stop ChargeAnim after 1.15s real-time
+            task.delay(1.15, function()
+                if ChargeAnimTrack and ChargeAnimTrack.IsPlaying then
+                    ChargeAnimTrack:Stop()
+                end
+            end)
+
+            -- Wait until original anim reaches 1.65
+            repeat task.wait() until v.TimePosition >= 1.65
+
+            -- Disconnect monitor
+            if MonitorConnection then
+                MonitorConnection:Disconnect()
+            end
+
+            -- Play Combo1
+            local ComboAnim1 = Instance.new("Animation")
+            ComboAnim1.AnimationId = "rbxassetid://84448423136678"
+            local Combo1Track = char.Humanoid:LoadAnimation(ComboAnim1)
+            Combo1Track.Priority = Enum.AnimationPriority.Action4
+            Combo1Track:Play()
+            Combo1Track.TimePosition = 2.75
+            Combo1Track:AdjustSpeed(AnimationSpeed)
+
+            -- Wait until original anim stops, then stop Combo1Track
+            task.spawn(function()
+                repeat task.wait() until not v.IsPlaying
+                Combo1Track:Stop()
+            end)
+        end
+    end
+end)
+getgenv().Move2 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://124901309160375" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://132704398648016"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 2.85
+
+        -- Delay before debris effect starts (matches slam timing)
+        task.delay(0.5, function()
+            local debrisFolder = workspace:FindFirstChild("Thrown") or Instance.new("Folder", workspace)
+            debrisFolder.Name = "Thrown"
+
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if not hrp then return end
+
+            for i = 1, 25 do
+                task.spawn(function()
+                    local angle = math.rad(math.random(0, 360))
+                    local distance = math.random(3, 8)
+                    local x = math.cos(angle) * distance
+                    local z = math.sin(angle) * distance
+                    local offset = Vector3.new(x, 0.2, z)
+
+                    local p = Instance.new("Part")
+                    p.Parent = debrisFolder
+                    p.Material = Enum.Material.Neon
+                    p.Size = Vector3.new(1, 1, 1)
+                    p.Anchored = true
+                    p.CanCollide = false
+                    p.Color = Color3.new(1, 1, 1)
+                    p.Transparency = 0.9
+
+                    local msh2 = Instance.new("SpecialMesh", p)
+                    msh2.MeshType = "Sphere"
+                    msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+
+                    p.CFrame = hrp.CFrame * CFrame.new(offset)
+
+                    task.wait(0.03)
+                    p.Transparency = 0
+                    msh2.Scale = Vector3.new(1, 1, 1)
+                    p.Color = Color3.new(0, 0, 0)
+
+                    game:GetService("Debris"):AddItem(p, 0.4)
+
+                    game.TweenService:Create(msh2, TweenInfo.new(0.4), {
+                        Scale = Vector3.new(2.5, 10, 2.5)
+                    }):Play()
+
+                    game.TweenService:Create(p, TweenInfo.new(0.3), {
+                        Transparency = 1,
+                        CFrame = p.CFrame + Vector3.new(0, -0.5, 0)
+                    }):Play()
+                end)
+                task.wait(0.015)
+            end
+        end)
+
+        -- Resume and stop animation after impact
+        task.delay(1.1, function()
+            k:AdjustSpeed(2)
+            k:Stop(0.1)
+        end)
+    end
+end)
+getgenv().Move3 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://100962226150441" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://76313364850487"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 9.1
+
+        -- Delay before debris effect
+        task.delay(0.6, function()
+            local debrisFolder = workspace:FindFirstChild("Thrown") or Instance.new("Folder", workspace)
+            debrisFolder.Name = "Thrown"
+
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if not hrp then return end
+
+            for i = 1, 25 do
+                task.spawn(function()
+                    local p = Instance.new("Part")
+                    p.Parent = debrisFolder
+                    p.Material = Enum.Material.Neon
+                    p.Size = Vector3.new(1, 1, 1)
+                    p.Anchored = true
+                    p.CanCollide = false
+                    p.Color = Color3.new(1, 1, 1)
+                    p.Transparency = 0.9
+
+                    local msh2 = Instance.new("SpecialMesh", p)
+                    msh2.MeshType = "Sphere"
+                    msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+
+                    local pos = hrp.Position + Vector3.new(math.random(-5,5), i * 0.5 + math.random(3,8), math.random(-5,5))
+                    local look = CFrame.lookAt(pos, hrp.Position)
+                    p.CFrame = look * CFrame.new(0, 0, -3)
+
+                    task.wait(0.05)
+                    p.Transparency = 0
+                    msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+                    p.Color = Color3.new(0, 0, 0)
+
+                    game:GetService("Debris"):AddItem(p, 0.5)
+
+                    game.TweenService:Create(msh2, TweenInfo.new(1), {
+                        Scale = Vector3.new(2.5, 2.5, 10)
+                    }):Play()
+
+                    game.TweenService:Create(p, TweenInfo.new(0.3), {
+                        Transparency = 1,
+                        CFrame = p.CFrame * CFrame.new(0, -i + math.random(-10, -3), 0)
+                    }):Play()
+                end)
+                task.wait(0.03)
+            end
+        end)
+
+        -- Resume and stop animation
+        task.delay(1, function()
+            k:AdjustSpeed(2)
+            k:Stop(0.1)
+        end)
+    end
+end)
+local lp = game.Players.LocalPlayer
+local char = lp.Character or lp.CharacterAdded:Wait()
+local hrp = char:WaitForChild("HumanoidRootPart")
+local debrisFolder = workspace:FindFirstChild("Thrown") or Instance.new("Folder", workspace)
+debrisFolder.Name = "Thrown"
+
+local AnimationSpeed = 1
+local MissAnimTrack, LandedTrack, MonitorConnection
+
+-- Debris Charge Effect
+local function spawnDebris(charge)
+    local direction = (hrp.Position - Vector3.new(math.random(-3,3), 0, math.random(-3,3))).Unit
+    for i = 1, 25 do
+        task.spawn(function()
+            local p = Instance.new("Part")
+            p.Parent = debrisFolder
+            p.Material = Enum.Material.Neon
+            p.Size = Vector3.new(1, 1, 1)
+            p.Anchored = true
+            p.CanCollide = false
+            p.Color = Color3.new(1, 1, 1)
+            p.Transparency = 0.9
+
+            local msh2 = Instance.new("SpecialMesh", p)
+            msh2.MeshType = "Sphere"
+            msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+
+            local pos = hrp.Position + Vector3.new(math.random(-5,5), i * 0.5 + math.random(3,8), math.random(-5,5))
+            local look = CFrame.lookAt(pos, hrp.Position)
+            p.CFrame = look * CFrame.new(0,0,-3)
+
+            task.wait(0.05)
+            p.Transparency = 0
+            msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+            p.Color = Color3.new(0, 0, 0)
+
+            game:GetService("Debris"):AddItem(p, 0.5)
+
+            game.TweenService:Create(msh2, TweenInfo.new(1), {
+                Scale = Vector3.new(0.5, 0.5, 1)
+            }):Play()
+
+            game.TweenService:Create(p, TweenInfo.new(0.3), {
+                Transparency = 1,
+                CFrame = p.CFrame * CFrame.new(0, -i + math.random(-10, -3), 0)
+            }):Play()
+        end)
+        task.wait(0.03)
+    end
+end
+
+-- Create Text Effect
+local function showChineseFX()
+    local function createTextPart(offset, text)
+        local part = Instance.new("Part")
+        part.Size = Vector3.new(2, 4, 0.2)
+        part.Anchored = true
+        part.CanCollide = false
+        part.Transparency = 1
+        part.Parent = workspace
+
+        local gui = Instance.new("SurfaceGui", part)
+        gui.Face = Enum.NormalId.Front
+        gui.AlwaysOnTop = true
+
+        local label = Instance.new("TextLabel", gui)
+        label.Size = UDim2.new(1,0,1,0)
+        label.Text = text
+        label.TextColor3 = Color3.new(1,1,1)
+        label.TextSize = 48
+        label.BackgroundTransparency = 1
+        label.TextStrokeTransparency = 0.5
+        label.TextStrokeColor3 = Color3.new(0,0,0)
+        label.Rotation = 90
+        label.TextWrapped = true
+        label.TextYAlignment = Enum.TextYAlignment.Center
+        label.TextXAlignment = Enum.TextXAlignment.Center
+        label.Font = Enum.Font.SourceSansBold
+
+        task.spawn(function()
+            for i = 1, 30 do
+                part.CFrame = hrp.CFrame * offset
+                task.wait()
+            end
+            game.TweenService:Create(label, TweenInfo.new(0.5), {
+                TextTransparency = 1,
+                TextStrokeTransparency = 1
+            }):Play()
+            game:GetService("Debris"):AddItem(part, 1)
+        end)
+    end
+
+    createTextPart(CFrame.new(-3, 2, 0), "反\n击") -- Left of player: Retaliate
+    createTextPart(CFrame.new(3, 2, 0), "现\n在") -- Right of player: Now!
+end
+
+-- Animation Connection
+getgenv().Counter = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://82987093810211" then
+        if v.TimePosition < 1.5 then
+            -- Charge Animation
+            local MissAnim = Instance.new("Animation")
+            MissAnim.AnimationId = "rbxassetid://101956908324027"
+            MissAnimTrack = char.Humanoid:LoadAnimation(MissAnim)
+            MissAnimTrack.Priority = Enum.AnimationPriority.Action4
+            MissAnimTrack:Play()
+            MissAnimTrack.TimePosition = 6
+            MissAnimTrack:AdjustSpeed(0.85)
+
+            MonitorConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                if v.Speed <= 0 then
+                    MissAnimTrack:AdjustSpeed(0)
+                else
+                    MissAnimTrack:AdjustSpeed(AnimationSpeed)
+                end
+            end)
+
+            task.delay(0.85, function()
+                if MissAnimTrack and MissAnimTrack.IsPlaying then
+                    MissAnimTrack:Stop()
+                end
+            end)
+
+            -- Debris charging FX and Chinese Text
+            spawnDebris(true)
+            showChineseFX()
+
+            repeat task.wait() until v.TimePosition >= 1.5
+
+            -- Debris Strike Blast
+            spawnDebris(false)
+
+            if MonitorConnection then
+                MonitorConnection:Disconnect()
+            end
+
+            -- Combo Animation
+            local LandedAnim = Instance.new("Animation")
+            LandedAnim.AnimationId = "rbxassetid://123167492985370"
+            LandedTrack = char.Humanoid:LoadAnimation(LandedAnim)
+            LandedTrack.Priority = Enum.AnimationPriority.Action4
+            LandedTrack:Play()
+            LandedTrack.TimePosition = 1.5
+            LandedTrack:AdjustSpeed(AnimationSpeed)
+
+            task.spawn(function()
+                repeat task.wait() until not v.IsPlaying
+                LandedTrack:Stop()
+            end)
+        end
+    end
+end)
+local function createDebris(style)
+    local debrisFolder = workspace:FindFirstChild("Thrown") or Instance.new("Folder", workspace)
+    debrisFolder.Name = "Thrown"
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    for i = 1, 10 do
+        task.spawn(function()
+            local p = Instance.new("Part")
+            p.Parent = debrisFolder
+            p.Material = Enum.Material.Neon
+            p.Size = Vector3.new(1, 1, 1)
+            p.Anchored = true
+            p.CanCollide = false
+            p.Color = Color3.new(1, 1, 1)
+            p.Transparency = 0.9
+
+            local msh2 = Instance.new("SpecialMesh", p)
+            msh2.MeshType = "Sphere"
+            msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+
+            local posOffset
+            if style == "forward" then
+                posOffset = Vector3.new(0, 1, -math.random(3, 5))
+            elseif style == "side" then
+                local side = (i % 2 == 0) and 1 or -1
+                posOffset = Vector3.new(side * math.random(2, 4), 1, -math.random(2, 4))
+            elseif style == "arc" then
+                posOffset = Vector3.new(math.random(-2, 2), 3, -math.random(2, 5))
+            elseif style == "slam" then
+                local angle = math.rad(math.random(0, 360))
+                local dist = math.random(2, 4)
+                posOffset = Vector3.new(math.cos(angle) * dist, 0.2, math.sin(angle) * dist)
+            else
+                posOffset = Vector3.new(0, 1, -3)
+            end
+
+            p.CFrame = hrp.CFrame * CFrame.new(posOffset)
+
+            task.wait(0.03)
+            p.Transparency = 0
+            p.Color = Color3.new(0, 0, 0)
+            msh2.Scale = Vector3.new(0.05, 0.05, 0.05)
+
+            game:GetService("Debris"):AddItem(p, 0.4)
+
+            game.TweenService:Create(msh2, TweenInfo.new(0.3), {
+                Scale = Vector3.new(0.5, 0.5 10)
+            }):Play()
+
+            game.TweenService:Create(p, TweenInfo.new(0.25), {
+                Transparency = 1,
+                CFrame = p.CFrame + Vector3.new(0, -0.4, 0)
+            }):Play()
+        end)
+        task.wait(0.015)
+    end
+end
+
+-- Melee 1: Jab (forward debris)
+getgenv().Melee1 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://95295463826732" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://106474043944206"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 0
+
+        task.delay(0.2, function()
+            createDebris("forward")
+        end)
+
+        task.delay(1, function()
+            k:AdjustSpeed(1)
+            k:Stop(0.1)
+        end)
+    end
+end)
+
+-- Melee 2: Side hit (side debris)
+getgenv().Melee2 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://105077924973072" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://91990544700842"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 0
+
+        task.delay(0.2, function()
+            createDebris("side")
+        end)
+
+        task.delay(1, function()
+            k:AdjustSpeed(1)
+            k:Stop(0.1)
+        end)
+    end
+end)
+
+-- Melee 3: Overhead (arc debris)
+getgenv().Melee3 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://124862357369335" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://107825127494342"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 0
+
+        task.delay(0.2, function()
+            createDebris("arc")
+        end)
+
+        task.delay(1, function()
+            k:AdjustSpeed(1)
+            k:Stop(0.1)
+        end)
+    end
+end)
+
+-- Melee 4: Slam (slam debris)
+getgenv().Melee4 = char.Humanoid.AnimationPlayed:Connect(function(v)
+    if v.Animation.AnimationId == "rbxassetid://81630213087988" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://97504088532041"
+        local k = char.Humanoid:LoadAnimation(Anim)
+        k.Priority = Enum.AnimationPriority.Action4
+        k:Play()
+        k.TimePosition = 0
+
+        task.delay(0.2, function()
+            createDebris("foward")
+        end)
+
+        task.delay(1, function()
+            k:AdjustSpeed(1)
+            k:Stop(0.1)
+        end)
+    end
+end)
+    local tt = game.Players.LocalPlayer.PlayerGui.Main.Ultimate.Title
+                tt.Text = "“Don't Eager Yourselfs Next Time..”"
+                tt.TextColor3 = Color3.fromRGB(255, 255, 255)
+                tt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                tt.BorderColor3 = Color3.fromRGB(255, 255, 0)
+--BurstVFX,LightHitEffect,HeavyHitVFX,WindVFX
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local bar = player.PlayerGui.Main.Ultimate.Bar
+
+-- Define a dark purple gradient
+local darkPurpleGradient = {
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+}
+local gradient = ColorSequence.new(darkPurpleGradient)
+
+-- Apply the gradient to the UIGradients
+bar.Fill2.UIGradient.Color = gradient
+bar.Fill.UIGradient.Color = gradient
+bar.UIGradient.Color = gradient
+
+-- Add the corner decals
+local function createCornerDecal(name, position, rotation)
+	local imageLabel = Instance.new("ImageLabel")
+	imageLabel.Name = name
+	imageLabel.Image = "rbxassetid://7766722535"
+	imageLabel.Size = UDim2.new(0, 70, 0, 70) -- Adjust size as needed
+	imageLabel.BackgroundTransparency = 1
+	imageLabel.Position = position
+	imageLabel.Rotation = rotation
+	imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel.Parent = bar
+end
+
+-- Left corner
+createCornerDecal("LeftDecal", UDim2.new(0, 0, 0.1, 0), 0)
+
+-- Right corner
+createCornerDecal("RightDecal", UDim2.new(1, 0, 0.1, 0), 180)
+
+getgenv().Time = 0.2
+
+-- Configuration for body part scaling (to make character taller and slimmer)
+getgenv().BodyScaling = {
+    Head = Vector3.new(1.1, 1.1, 1.1),
+    Torso = Vector3.new(0.95, 1.1, 0.95),  -- Taller but slimmer torso
+    Arms = Vector3.new(0.95, 1.1, 0.95),  -- Slimmer and slightly longer arms
+    Legs = Vector3.new(0.95, 1.1, 0.95)   -- Slimmer and longer legs
+}
+
+-- Accessories with configurable offsets and scaling
+getgenv().Torso = {
+    MeshId = "rbxassetid://120150589234990",
+    TextureId = "rbxassetid://135682783261454",
+    Offset = CFrame.new(0, -0.85, 0),
+    Scale = Vector3.new(0.95, 1.1, 0.95)
+}
+
+getgenv().RightArm = {
+    MeshId = "rbxassetid://100631033855389",
+    TextureId = "rbxassetid://103592510665967",
+    Offset = CFrame.new(0, -0.95, 0),
+    Scale = Vector3.new(1.1, 1.1, 0.95)
+}
+
+getgenv().LeftArm = {
+    MeshId = "rbxassetid://122668474767016",
+    TextureId = "rbxassetid://84557144978245",
+    Offset = CFrame.new(0, -0.95, 0),
+    Scale = Vector3.new(1.1, 1.1, 0.95)
+}
+
+getgenv().RightLeg = {
+    MeshId = "rbxassetid://129024918311420",
+    TextureId = "rbxassetid://92065696734087",
+    Offset = CFrame.new(0, 0.75, 0),
+    Scale = Vector3.new(0.95, 1.65, 0.95)
+}
+
+getgenv().LeftLeg = {
+    MeshId = "rbxassetid://106180372330238",
+    TextureId = "rbxassetid://92065696734087",
+    Offset = CFrame.new(0, 0.75, 0),
+    Scale = Vector3.new(0.95, 1.65, 0.95)
+}
+
+-- Hair Mesh Configuration
+getgenv().HairMeshes = {
+    -- Add Rotation in radians (e.g., Vector3.new(0, math.rad(90), 0))
+    {MeshId = "rbxassetid://122420182381471", Offset = Vector3.new(0, -1.22, 0.2), Rotation = Vector3.new(0, 90, 0)},
+    {MeshId = "rbxassetid://124616337236968", Offset = Vector3.new(0, 0.059, 0.28), Rotation = Vector3.new(0, 90, 0)},
+    {MeshId = "rbxassetid://83881065971318", Offset = Vector3.new(0, 0.059, 0.28), Rotation = Vector3.new(0, 90, 0)},
+    {MeshId = "rbxassetid://130779357951282", Offset = Vector3.new(0, 0.059, 0.28), Rotation = Vector3.new(0, 90, 0)},
+}
+getgenv().HairTextureId = "rbxassetid://6752759709"
+getgenv().HairScale = Vector3.new(0.95, 0.95, 0.95)
+
+local function weldParts(part0, part1, c0, c1)
+    local weld = Instance.new("Weld")
+    weld.Part0 = part0
+    weld.Part1 = part1
+    weld.C0 = c0 or CFrame.new()
+    weld.C1 = c1 or CFrame.new()
+    weld.Parent = part0
+    return weld
+end
+
+local function findAttachment(rootPart, name)
+    for _, desc in ipairs(rootPart:GetDescendants()) do
+        if desc:IsA("Attachment") and desc.Name == name then
+            return desc
+        end
+    end
+end
+
+local function scaleCharacter(character)
+    -- Scale head
+    local head = character:FindFirstChild("Head")
+    if head then
+        head.Size = head.Size * getgenv().BodyScaling.Head
+    end
+    
+    -- Scale torso parts
+    local upperTorso = character:FindFirstChild("UpperTorso") or character:FindFirstChild("Torso")
+    local lowerTorso = character:FindFirstChild("LowerTorso")
+    
+    if upperTorso then
+        upperTorso.Size = upperTorso.Size * getgenv().BodyScaling.Torso
+    end
+    if lowerTorso then
+        lowerTorso.Size = lowerTorso.Size * getgenv().BodyScaling.Torso
+    end
+    
+    -- Scale arms
+    local rightUpperArm = character:FindFirstChild("RightUpperArm") or character:FindFirstChild("Right Arm")
+    local leftUpperArm = character:FindFirstChild("LeftUpperArm") or character:FindFirstChild("Left Arm")
+    
+    if rightUpperArm then
+        rightUpperArm.Size = rightUpperArm.Size * getgenv().BodyScaling.Arms
+    end
+    if leftUpperArm then
+        leftUpperArm.Size = leftUpperArm.Size * getgenv().BodyScaling.Arms
+    end
+    
+    -- Scale legs
+    local rightUpperLeg = character:FindFirstChild("RightUpperLeg") or character:FindFirstChild("Right Leg")
+    local leftUpperLeg = character:FindFirstChild("LeftUpperLeg") or character:FindFirstChild("Left Leg")
+    
+    if rightUpperLeg then
+        rightUpperLeg.Size = rightUpperLeg.Size * getgenv().BodyScaling.Legs
+    end
+    if leftUpperLeg then
+        leftUpperLeg.Size = leftUpperLeg.Size * getgenv().BodyScaling.Legs
+    end
+end
+
+local function createMeshPart(parent, meshId, textureId, scale, offset)
+    local part = Instance.new("Part")
+    part.Name = "CustomMeshPart"
+    part.Size = Vector3.new(1, 1, 1)
+    part.Anchored = false
+    part.CanCollide = false
+    part.Transparency = 0
+    part.Color = Color3.new(0, 0, 0)
+    part.Parent = parent
+
+    local mesh = Instance.new("SpecialMesh")
+    mesh.MeshType = Enum.MeshType.FileMesh
+    mesh.MeshId = meshId
+    mesh.TextureId = textureId
+    mesh.Scale = scale
+    mesh.Parent = part
+    
+    return part, mesh
+end
+
+local function addAccessoryToCharacter(part, config)
+    local meshPart, mesh = createMeshPart(part.Parent, config.MeshId, config.TextureId, config.Scale)
+    
+    -- Find the best attachment point
+    local attachment = part:FindFirstChildOfClass("Attachment") or part:FindFirstChild("R6Attachment")
+    
+    if attachment then
+        weldParts(part, meshPart, attachment.CFrame * config.Offset, CFrame.new())
+    else
+        -- Fallback welding if no attachment is found
+        weldParts(part, meshPart, config.Offset, CFrame.new())
+    end
+    
+    return meshPart
+end
+
+local function addHairMeshes(character)
+    local head = character:FindFirstChild("Head")
+    if not head then return end
+
+    for _, hair in ipairs(getgenv().HairMeshes) do
+        local part, mesh = createMeshPart(character, hair.MeshId, getgenv().HairTextureId, getgenv().HairScale)
+        
+        local attachment = head:FindFirstChild("HairAttachment") or head:FindFirstChild("HatAttachment")
+        if attachment then
+            weldParts(head, part, attachment.CFrame * CFrame.new(hair.Offset), CFrame.new())
+        else
+            weldParts(head, part, CFrame.new(0, 0.5, 0) * CFrame.new(hair.Offset), CFrame.new())
+        end
+    end
+end
+
+local function loadAccessories(character)
+    -- Remove all existing custom parts
+    for _, child in ipairs(character:GetChildren()) do
+        if child.Name == "CustomMeshPart" or child.Name == "CustomHair" then
+            child:Destroy()
+        end
+    end
+
+    -- Scale the character first
+    scaleCharacter(character)
+
+    -- Torso
+    local torso = character:FindFirstChild("UpperTorso") or character:FindFirstChild("Torso")
+    if torso then
+        addAccessoryToCharacter(torso, getgenv().Torso)
+    end
+
+    -- Right Arm
+    local rArm = character:FindFirstChild("RightUpperArm") or character:FindFirstChild("Right Arm")
+    if rArm then
+        addAccessoryToCharacter(rArm, getgenv().RightArm)
+    end
+
+    -- Left Arm
+    local lArm = character:FindFirstChild("LeftUpperArm") or character:FindFirstChild("Left Arm")
+    if lArm then
+        addAccessoryToCharacter(lArm, getgenv().LeftArm)
+    end
+
+    -- Right Leg
+    local rLeg = character:FindFirstChild("RightUpperLeg") or character:FindFirstChild("Right Leg")
+    if rLeg then
+        addAccessoryToCharacter(rLeg, getgenv().RightLeg)
+    end
+
+    -- Left Leg
+    local lLeg = character:FindFirstChild("LeftUpperLeg") or character:FindFirstChild("Left Leg")
+    if lLeg then
+        addAccessoryToCharacter(lLeg, getgenv().LeftLeg)
+    end
+
+    -- Custom Hair Meshes
+    addHairMeshes(character)
+end
+
+local function loadClothing()
+    local char = game.Players.LocalPlayer.Character
+    pcall(function() char.Pants:Destroy() end)
+    pcall(function() char.Shirt:Destroy() end)
+
+    local pants = Instance.new("Pants")
+    pants.Parent = char
+    pants.PantsTemplate = 'rbxassetid://6897450790'
+    pants.Name = 'Pants'
+
+    local shirt = Instance.new("Shirt")
+    shirt.Parent = char
+    shirt.ShirtTemplate = 'rbxassetid://13289449837'
+    shirt.Name = 'Shirt'
+end
+
+local function changeFace(character)
+    local head = character:FindFirstChild("Head")
+    if head then
+        local oldFace = head:FindFirstChildWhichIsA("Decal")
+        if oldFace then
+            oldFace:Destroy()
+        end
+
+        local newFace = Instance.new("Decal")
+        newFace.Name = "face"
+        newFace.Texture = "rbxassetid://104774202187310"
+        newFace.Face = Enum.NormalId.Front
+        newFace.Parent = head
+    end
+end
+
+local function setSkinColor(character)
+    local pitchBlack = Color3.new(0.9137, 0.7216, 0.5725)
+    for _, part in ipairs(character:GetChildren()) do
+        if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" and part.Name ~= "Handle" then
+            if part.Name ~= "Head" or not part:FindFirstChildOfClass("Decal") then
+                part.Color = pitchBlack
+                part.Material = Enum.Material.SmoothPlastic
+            end
+        end
+    end
+end
+
+local function onCharacterAdded(character)
+    wait(getgenv().Time)
+    
+    if not character:GetAttribute("CustomApplied") then
+        loadAccessories(character)
+        loadClothing()
+        changeFace(character)
+        setSkinColor(character)
+        character:SetAttribute("CustomApplied", true)
+    end
+end
+
+local function onCharacterDied()
+    local character = game.Players.LocalPlayer.Character
+    if character then
+        local root = character:FindFirstChild("HumanoidRootPart")
+        if root then
+            lastDeathPosition = root.Position
+        end
+    end
+end
+
+-- Character Respawn Handling
+game.Players.LocalPlayer.CharacterAdded:Connect(function(char)
+    char:WaitForChild("Humanoid").Died:Connect(onCharacterDied)
+    onCharacterAdded(char)
+end)
+
+if game.Players.LocalPlayer.Character then
+    local char = game.Players.LocalPlayer.Character
+    char:WaitForChild("Humanoid").Died:Connect(onCharacterDied)
+    onCharacterAdded(char)
+end
+pcall(function() getgenv().Idle:Disconnect() end)
+
+getgenv().Idle = game.Players.LocalPlayer.Character.Humanoid.AnimationPlayed:Connect(function(v)
+    local id = v.Animation.AnimationId
+    if id == "rbxassetid://120133391090244" or id == "rbxassetid://138196552148011" then
+        local Anim = Instance.new("Animation")
+        Anim.AnimationId = "rbxassetid://105826208784475"
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        local k = humanoid:LoadAnimation(Anim)
+        
+        k.Priority = Enum.AnimationPriority.Idle
+        k.Looped = true
+        k:Play(0.3)
+        k:AdjustSpeed(0) -- Freeze animation for manual control
+
+        -- Define key points for the loop
+        local startTime = 1.65
+        local endTime = 1.66
+        local cycleDuration = 0.25
+        local timeElapsed = 0
+
+        local connection
+        connection = game:GetService("RunService").Heartbeat:Connect(function(deltaTime)
+            timeElapsed = (timeElapsed + deltaTime) % (cycleDuration * 2)
+
+            local alpha = (math.sin((timeElapsed / cycleDuration) * math.pi - math.pi / 2) + 1) / 2
+            k.TimePosition = startTime + (endTime - startTime) * alpha
+        end)
+
+        v.Stopped:Wait()
+        k:Stop(0.3)
+        connection:Disconnect()
+    end
+end)
+
+local function toRotationCFrame(rotationVector)
+    return CFrame.Angles(rotationVector.X, rotationVector.Y, rotationVector.Z)
+end
+local url = "https://github.com/REFLOXERING/refloshering/raw/refs/heads/main/Limbus%20Company%20OST%20-%20Canto%20VIII%20Boss%202%20_Lei%20Heng_%20-%20the%20horse%20-%20SoundLoadMate.com.mp3" -- example
+local fileName = "MrHangYourBallsHigh.mp3"  -- You can name the file however you want
+
+-- Always check and download the file
+if not isfile(fileName) then
+    writefile(fileName, game:HttpGet(url))
+end
+
+-- Create a sound object and play it
+local sound = Instance.new("Sound")
+sound.SoundId = getcustomasset(fileName)  -- Load from custom asset
+sound.Volume = 0.75  -- Set volume to desired level
+sound.Looped = true  -- Set to false to prevent looping
+sound.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") -- Parent to PlayerGui or Workspace
+
+-- Play the sound
+sound:Play()
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+if not RunService:IsClient() then return end
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Aura part that follows the player
+local auraPart = Instance.new("Part")
+auraPart.Size = Vector3.new(1, 1, 1)
+auraPart.Anchored = false
+auraPart.CanCollide = false
+auraPart.Transparency = 1
+auraPart.Name = "AuraPart"
+auraPart.Parent = character
+
+-- Weld it to the HumanoidRootPart
+local weld = Instance.new("WeldConstraint")
+weld.Part0 = humanoidRootPart
+weld.Part1 = auraPart
+weld.Parent = auraPart
+
+-- Set CFrame position slightly below or around the player
+auraPart.Position = humanoidRootPart.Position
+
+-- Create the particle emitter
+local particle = Instance.new("ParticleEmitter")
+particle.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume
+particle.FlipbookFramerate = NumberRange.new(5)
+particle.LightInfluence = 0
+particle.Lifetime = NumberRange.new(0.35, 1)
+particle.FlipbookLayout = Enum.ParticleFlipbookLayout.Grid2x2
+particle.SpreadAngle = Vector2.new(0, 0)
+particle.LockedToPart = true
+particle.Transparency = NumberSequence.new{
+    NumberSequenceKeypoint.new(0, 1),
+    NumberSequenceKeypoint.new(0.235052, 0.876190),
+    NumberSequenceKeypoint.new(0.591753, 0.857143),
+    NumberSequenceKeypoint.new(1, 1)
+}
+particle.Orientation = Enum.ParticleOrientation.FacingCamera
+particle.Color = ColorSequence.new(Color3.new(1,1,1))
+particle.Drag = 0
+particle.FlipbookStartRandom = false
+particle.TimeScale = 0.5
+particle.VelocitySpread = 0
+particle.Squash = NumberSequence.new(0)
+particle.Speed = NumberRange.new(0.004, 0.004)
+particle.Brightness = 1
+particle.Size = NumberSequence.new(5)
+particle.Acceleration = Vector3.new(0, 0, 0)
+particle.RotSpeed = NumberRange.new(0, 0)
+particle.ZOffset = 0.28
+particle.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward
+particle.Rate = 50
+particle.VelocityInheritance = 0
+particle.Rotation = NumberRange.new(0, 0)
+particle.ShapePartial = 1
+particle.Texture = "http://www.roblox.com/asset/?id=15571151704"
+particle.FlipbookMode = Enum.ParticleFlipbookMode.Loop
+particle.EmissionDirection = Enum.NormalId.Top
+particle.Shape = Enum.ParticleEmitterShape.Box
+particle.LightEmission = 1
+particle.Enabled = true
+
+-- Parent the particle to the aura part
+particle.Parent = auraPart
